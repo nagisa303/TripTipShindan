@@ -1,0 +1,385 @@
+:root {
+  --color-primary: #E87023;
+  --color-primary-dark: #C95F15;
+  --color-bg: #F8F2EA;
+  --color-card: #FFFFFF;
+  --color-text: #2A2420;
+  --color-border: #D9D2CA;
+  --color-muted: #8C7B72;
+  --radius-card: 20px;
+  --shadow-card: 0 10px 30px rgba(42, 36, 32, 0.10);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Noto Sans JP", "Hiragino Kaku Gothic ProN", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100dvh;
+}
+
+.app {
+  width: min(100%, 430px);
+  margin: 0 auto;
+  min-height: 100dvh;
+  padding: 32px 16px 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* =====================
+   ロゴ
+===================== */
+.brand-logo {
+  display: block;
+  height: 36px;
+  width: auto;
+  margin: 0 auto 8px;
+  object-fit: contain;
+}
+
+.brand-logo-text {
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--color-primary);
+  margin: 0 0 24px;
+}
+
+/* =====================
+   トップ画面
+===================== */
+#screen-top {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 0;
+}
+
+.top-icon {
+  font-size: 48px;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.top-title {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--color-text);
+  margin: 0 0 12px;
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+}
+
+.top-subtitle {
+  font-size: 15px;
+  color: var(--color-muted);
+  margin: 0 0 36px;
+  line-height: 1.7;
+}
+
+.top-note {
+  font-size: 12px;
+  color: var(--color-muted);
+  margin: 12px 0 0;
+}
+
+/* =====================
+   質問画面
+===================== */
+#screen-question {
+  justify-content: space-between;
+}
+
+.question-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+}
+
+.progress-dots {
+  display: flex;
+  gap: 8px;
+}
+
+.progress-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-border);
+  transition: background 0.3s;
+}
+
+.progress-dot.active {
+  background: var(--color-primary);
+}
+
+.progress-label {
+  font-size: 13px;
+  color: var(--color-muted);
+  font-weight: 600;
+}
+
+.question-card {
+  background: var(--color-card);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: 32px 24px 28px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 28px;
+}
+
+.question-text {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.65;
+  color: var(--color-text);
+  text-align: center;
+  margin: 0;
+}
+
+.answer-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.answer-btn {
+  flex: 1;
+  height: 56px;
+  border: none;
+  border-radius: 14px;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
+  letter-spacing: 0.05em;
+}
+
+.answer-btn:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.btn-yes {
+  background: var(--color-primary);
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(232, 112, 35, 0.35);
+}
+
+.btn-yes:hover, .btn-yes:active {
+  background: var(--color-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(232, 112, 35, 0.4);
+}
+
+.btn-yes:active {
+  transform: translateY(0);
+}
+
+.btn-no {
+  background: var(--color-card);
+  color: var(--color-text);
+  border: 2px solid var(--color-border);
+}
+
+.btn-no:hover, .btn-no:active {
+  background: var(--color-bg);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(42, 36, 32, 0.08);
+}
+
+.btn-no:active {
+  transform: translateY(0);
+}
+
+/* =====================
+   結果画面
+===================== */
+#screen-result {
+  align-items: stretch;
+}
+
+.result-label {
+  font-size: 14px;
+  color: var(--color-muted);
+  text-align: center;
+  margin: 0 0 8px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+.result-category {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--color-primary);
+  text-align: center;
+  margin: 0 0 20px;
+  line-height: 1.4;
+}
+
+.destination-card {
+  display: block;
+  background: var(--color-card);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--color-text);
+  margin-bottom: 16px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  border: 2px solid transparent;
+}
+
+.destination-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(42, 36, 32, 0.15);
+  border-color: var(--color-primary);
+}
+
+.destination-card:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.destination-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: center center;
+  background: var(--color-border);
+}
+
+.card-body {
+  padding: 16px 20px 18px;
+}
+
+.result-prefecture {
+  font-size: 12px;
+  color: var(--color-muted);
+  margin: 0 0 4px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+.result-spot {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.card-tap-hint {
+  font-size: 11px;
+  color: var(--color-muted);
+  text-align: right;
+  margin: 6px 0 0;
+}
+
+.primary-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 56px;
+  background: var(--color-primary);
+  color: #fff;
+  border-radius: 14px;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  box-shadow: 0 4px 16px rgba(232, 112, 35, 0.35);
+  transition: background 0.15s, transform 0.15s, box-shadow 0.15s;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.primary-button:hover {
+  background: var(--color-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(232, 112, 35, 0.4);
+}
+
+.primary-button:focus-visible {
+  outline: 3px solid var(--color-primary-dark);
+  outline-offset: 3px;
+}
+
+.play-icon {
+  font-size: 18px;
+}
+
+.retry-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 48px;
+  background: transparent;
+  color: var(--color-muted);
+  border: 2px solid var(--color-border);
+  border-radius: 14px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  letter-spacing: 0.03em;
+}
+
+.retry-button:hover {
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+.retry-button:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* =====================
+   アニメーション
+===================== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.35s ease forwards;
+}
+
+/* =====================
+   SVGプレースホルダー画像のフォールバック
+===================== */
+img.result-thumb-error {
+  background: var(--color-border);
+  min-height: 200px;
+}
+
+/* =====================
+   PC レイアウト調整
+===================== */
+@media (min-width: 500px) {
+  .app {
+    padding: 40px 20px 48px;
+  }
+
+  .top-title {
+    font-size: 28px;
+  }
+}

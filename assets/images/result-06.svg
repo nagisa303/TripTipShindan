@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="800" height="450">
+  <defs>
+    <linearGradient id="bg6" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6090B8;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3A6898;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg6)"/>
+  <!-- Decorative circles -->
+  <circle cx="700" cy="80" r="120" fill="rgba(255,255,255,0.08)"/>
+  <circle cx="100" cy="380" r="150" fill="rgba(255,255,255,0.06)"/>
+  <circle cx="400" cy="225" r="200" fill="rgba(255,255,255,0.04)"/>
+  <!-- Number badge -->
+  <circle cx="400" cy="150" r="48" fill="rgba(255,255,255,0.18)"/>
+  <text x="400" y="165" font-family="system-ui,sans-serif" font-size="36" font-weight="800" fill="white" text-anchor="middle">⑥</text>
+  <text x="400" y="230" font-family="system-ui,sans-serif" font-size="24" font-weight="700" fill="white" text-anchor="middle">解放感やワクワクを</text>
+  <text x="400" y="262" font-family="system-ui,sans-serif" font-size="24" font-weight="700" fill="white" text-anchor="middle">味わいたい</text>
+  <!-- Location info -->
+  <rect x="200" y="300" width="400" height="90" rx="12" fill="rgba(0,0,0,0.25)"/>
+  <text x="400" y="335" font-family="system-ui,sans-serif" font-size="16" fill="rgba(255,255,255,0.8)" text-anchor="middle">北海道ニセコ町</text>
+  <text x="400" y="370" font-family="system-ui,sans-serif" font-size="22" font-weight="700" fill="white" text-anchor="middle">アンヌプリスキー場</text>
+</svg>

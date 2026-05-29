@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 60" width="320" height="60">
+  <rect width="320" height="60" fill="#F8F2EA" rx="4"/>
+  <!-- Cup icon -->
+  <g transform="translate(12,8)">
+    <rect x="6" y="16" width="28" height="22" rx="3" fill="none" stroke="#E87023" stroke-width="2.5"/>
+    <path d="M34 20 Q44 20 44 27 Q44 34 34 34" fill="none" stroke="#E87023" stroke-width="2.5"/>
+    <line x1="11" y1="38" x2="29" y2="38" stroke="#E87023" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M17 16 Q17 8 20 6" fill="none" stroke="#E87023" stroke-width="2" stroke-linecap="round"/>
+    <path d="M23 16 Q23 8 26 5" fill="none" stroke="#E87023" stroke-width="2" stroke-linecap="round"/>
+  </g>
+  <!-- Text -->
+  <text x="68" y="26" font-family="system-ui,-apple-system,sans-serif" font-size="14" font-weight="700" fill="#E87023" letter-spacing="1">anywhere café</text>
+  <text x="68" y="46" font-family="system-ui,-apple-system,sans-serif" font-size="18" font-weight="800" fill="#2A2420" letter-spacing="0.5">OSAKA</text>
+</svg>
