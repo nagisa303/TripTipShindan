@@ -66,19 +66,22 @@ function renderResult(resultId) {
   document.getElementById("result-prefecture").textContent = result.prefecture;
   document.getElementById("result-spot").textContent = result.spot;
 
-  const videoBtn = document.getElementById("video-btn");
-  videoBtn.href = result.url;
-
-  const resultScreen = document.getElementById("screen-result");
-  resultScreen.classList.remove("fade-in");
-  void resultScreen.offsetWidth;
-  resultScreen.classList.add("fade-in");
+  document.getElementById("video-btn").href = result.url;
 }
 
 function showScreen(name) {
-  document.getElementById("screen-top").hidden = name !== "top";
-  document.getElementById("screen-question").hidden = name !== "question";
-  document.getElementById("screen-result").hidden = name !== "result";
+  ["top", "question", "result"].forEach(s => {
+    const el = document.getElementById(`screen-${s}`);
+    if (s === name) {
+      el.hidden = false;
+      el.classList.remove("screen-enter");
+      void el.offsetWidth;
+      el.classList.add("screen-enter");
+    } else {
+      el.hidden = true;
+      el.classList.remove("screen-enter");
+    }
+  });
 }
 
 document.addEventListener("DOMContentLoaded", init);
