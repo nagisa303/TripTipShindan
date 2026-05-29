@@ -50,6 +50,37 @@ function renderQuestion(questionId) {
   textEl.classList.add("fade-in");
 }
 
+function openYouTubeApp(youtubeUrl) {
+  const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+  if (!isMobile) {
+    window.open(youtubeUrl, '_blank');
+    return;
+  }
+
+  const videoIdMatch = youtubeUrl.match(/[?&]v=([^&]+)/);
+  if (!videoIdMatch) {
+    window.open(youtubeUrl, '_blank');
+    return;
+  }
+
+  const videoId = videoIdMatch[1];
+  const timeMatch = youtubeUrl.match(/[?&]t=(\d+)/);
+  const appUrl = 'vnd.youtube:' + videoId + (timeMatch ? '?t=' + timeMatch[1] : '');
+
+  let appOpened = false;
+  function onVisChange() {
+    if (document.hidden) appOpened = true;
+  }
+  document.addEventListener('visibilitychange', onVisChange);
+
+  window.location.href = appUrl;
+
+  setTimeout(() => {
+    document.removeEventListener('visibilitychange', onVisChange);
+    if (!appOpened) window.open(youtubeUrl, '_blank');
+  }, 1500);
+}
+
 function renderResult(resultId) {
   const result = RESULTS.find(r => r.id === resultId);
   if (!result) return;
@@ -58,6 +89,10 @@ function renderResult(resultId) {
 
   const card = document.getElementById("destination-card");
   card.href = result.url;
+  card.onclick = function(e) {
+    e.preventDefault();
+    openYouTubeApp(result.url);
+  };
 
   const img = document.getElementById("result-img");
   img.src = result.image;
@@ -66,7 +101,12 @@ function renderResult(resultId) {
   document.getElementById("result-prefecture").textContent = result.prefecture;
   document.getElementById("result-spot").textContent = result.spot;
 
-  document.getElementById("video-btn").href = result.url;
+  const videoBtn = document.getElementById("video-btn");
+  videoBtn.href = result.url;
+  videoBtn.onclick = function(e) {
+    e.preventDefault();
+    openYouTubeApp(result.url);
+  };
 }
 
 function showScreen(name) {
