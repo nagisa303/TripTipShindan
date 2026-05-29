@@ -51,12 +51,6 @@ function renderQuestion(questionId) {
 }
 
 function openYouTubeApp(youtubeUrl) {
-  const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-  if (!isMobile) {
-    window.open(youtubeUrl, '_blank');
-    return;
-  }
-
   const videoIdMatch = youtubeUrl.match(/[?&]v=([^&]+)/);
   if (!videoIdMatch) {
     window.open(youtubeUrl, '_blank');
@@ -65,20 +59,30 @@ function openYouTubeApp(youtubeUrl) {
 
   const videoId = videoIdMatch[1];
   const timeMatch = youtubeUrl.match(/[?&]t=(\d+)/);
-  const appUrl = 'vnd.youtube:' + videoId + (timeMatch ? '?t=' + timeMatch[1] : '');
+  const time = timeMatch ? timeMatch[1] : null;
 
-  let appOpened = false;
-  function onVisChange() {
-    if (document.hidden) appOpened = true;
+  if (/Android/i.test(navigator.userAgent)) {
+    // intent:// スキームはアプリ未インストール時に browser_fallback_url へ自動遷移
+    const fallback = encodeURIComponent(youtubeUrl);
+    window.location.href =
+      `intent://www.youtube.com/watch?v=${videoId}${time ? '&t=' + time : ''}` +
+      `#Intent;package=com.google.android.youtube;scheme=https;S.browser_fallback_url=${fallback};end`;
+  } else if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+    // vnd.youtube: スキームを試み、アプリが開かなければブラウザへフォールバック
+    const appUrl = 'vnd.youtube:' + videoId + (time ? '?t=' + time : '');
+    let appOpened = false;
+    function onVisChange() {
+      if (document.hidden) appOpened = true;
+    }
+    document.addEventListener('visibilitychange', onVisChange);
+    window.location.href = appUrl;
+    setTimeout(() => {
+      document.removeEventListener('visibilitychange', onVisChange);
+      if (!appOpened) window.open(youtubeUrl, '_blank');
+    }, 1500);
+  } else {
+    window.open(youtubeUrl, '_blank');
   }
-  document.addEventListener('visibilitychange', onVisChange);
-
-  window.location.href = appUrl;
-
-  setTimeout(() => {
-    document.removeEventListener('visibilitychange', onVisChange);
-    if (!appOpened) window.open(youtubeUrl, '_blank');
-  }, 1500);
 }
 
 function renderResult(resultId) {
