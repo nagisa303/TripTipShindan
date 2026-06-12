@@ -1,3 +1,44 @@
+let lineUserId = null;
+
+(async function initLiff() {
+  try {
+    await liff.init({ liffId: '2010379366-QgWEhDtI' });
+    if (liff.isLoggedIn()) {
+      const profile = await liff.getProfile();
+      lineUserId = profile.userId;
+    } else {
+      liff.login();
+    }
+  } catch (e) {
+    console.error('LIFF初期化エラー:', e);
+  }
+})();
+
+async function sendResultToLine(result) {
+  if (!lineUserId) return;
+
+  try {
+    await fetch('https://official-line-ai.vercel.app/diagnosis-result', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-diagnosis-secret': 'anycafe-diag-secret',
+      },
+      body: JSON.stringify({
+        userId:     lineUserId,
+        numeral:    result.numeral,
+        category:   result.category,
+        prefecture: result.prefecture,
+        spot:       result.spot,
+        url:        result.url,
+        image:      'https://trip-tip-test-vo6i.vercel.app/' + result.image.replace(/^\.\//, ''),
+      }),
+    });
+  } catch (e) {
+    console.error('送信エラー:', e);
+  }
+}
+
 let currentQuestionId = "q1";
 let answers = [];
 
@@ -111,6 +152,8 @@ function renderResult(resultId) {
     e.preventDefault();
     openYouTubeApp(result.url);
   };
+
+  sendResultToLine(result);
 }
 
 function showScreen(name) {
