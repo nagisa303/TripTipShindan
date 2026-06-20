@@ -84,6 +84,11 @@ function renderQuestion(questionId) {
     dot.classList.toggle("active", i < q.progress);
   });
 
+  document.querySelectorAll('#screen-question .answer-btn').forEach(btn => {
+    const clone = btn.cloneNode(true);
+    btn.parentNode.replaceChild(clone, btn);
+  });
+
   const textEl = document.getElementById("question-text");
   textEl.textContent = q.text;
   textEl.classList.remove("fade-in");
