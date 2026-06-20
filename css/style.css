@@ -196,14 +196,18 @@ body {
   border: 2px solid var(--color-border);
 }
 
-.btn-yes:hover, .btn-yes:active {
+.btn-yes:active {
   background: var(--color-bg);
-  transform: translateY(-2px);
+  transform: translateY(0);
   box-shadow: 0 4px 12px rgba(42, 36, 32, 0.08);
 }
 
-.btn-yes:active {
-  transform: translateY(0);
+@media (hover: hover) {
+  .btn-yes:hover {
+    background: var(--color-bg);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(42, 36, 32, 0.08);
+  }
 }
 
 .btn-no {
@@ -212,14 +216,18 @@ body {
   border: 2px solid var(--color-border);
 }
 
-.btn-no:hover, .btn-no:active {
+.btn-no:active {
   background: var(--color-bg);
-  transform: translateY(-2px);
+  transform: translateY(0);
   box-shadow: 0 4px 12px rgba(42, 36, 32, 0.08);
 }
 
-.btn-no:active {
-  transform: translateY(0);
+@media (hover: hover) {
+  .btn-no:hover {
+    background: var(--color-bg);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(42, 36, 32, 0.08);
+  }
 }
 
 /* =====================

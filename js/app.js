@@ -62,6 +62,8 @@ function restartDiagnosis() {
 }
 
 function answer(value) {
+  if (document.activeElement) document.activeElement.blur();
+
   answers.push({ questionId: currentQuestionId, value });
   const current = QUESTIONS[currentQuestionId];
   const next = value === "yes" ? current.yes : current.no;
