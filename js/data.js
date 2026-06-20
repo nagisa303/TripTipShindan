@@ -13,7 +13,7 @@ const QUESTIONS = {
   },
   q2r: {
     progress: 2,
-    text: “旅行では、計画通りより”偶然の発見”を楽しみたいですか？”,
+    text: "旅行では、計画通りより“偶然の発見”を楽しみたいですか？",
     yes: "q3a",
     no: "q3b"
   },
@@ -37,7 +37,7 @@ const QUESTIONS = {
   },
   q3b: {
     progress: 3,
-    text: “旅行では、景色や空気感で”気分が高まる瞬間”を求めますか？”,
+    text: "旅行では、景色や空気感で“気分が高まる瞬間”を求めますか？",
     yes: "result6",
     no: "result5"
   }
